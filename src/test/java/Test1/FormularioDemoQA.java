@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -59,8 +60,7 @@ public class FormularioDemoQA {
 
         pausa(1);
 
-        WebElement generoMasculino = driver.findElement(By.id("gender-radio-1"));
-        js.executeScript("arguments[0].click();", generoMasculino);
+        driver.findElement(By.xpath("//label[text()='Male']")).click();
 
         pausa(1);
 
@@ -69,13 +69,43 @@ public class FormularioDemoQA {
 
         pausa(1);
 
-        WebElement hobbieSports = driver.findElement(By.id("hobbies-checkbox-1"));
-        js.executeScript("arguments[0].click();", hobbieSports);
+        WebElement fecha = driver.findElement(By.id("dateOfBirthInput"));
+        fecha.sendKeys(Keys.CONTROL + "a");
+        fecha.sendKeys("31 Mar 1995");
+        fecha.sendKeys(Keys.ENTER);
+
+        pausa(1);
+
+        WebElement subjects = driver.findElement(By.id("subjectsInput"));
+        subjects.sendKeys("Maths");
+        subjects.sendKeys(Keys.ENTER);
+
+        pausa(1);
+
+        driver.findElement(By.xpath("//label[text()='Sports']")).click();
 
         pausa(1);
 
         driver.findElement(By.id("currentAddress"))
                 .sendKeys("Heredia, Costa Rica");
+
+        pausa(1);
+
+        js.executeScript("window.scrollBy(0,500)");
+
+        pausa(1);
+
+        driver.findElement(By.id("react-select-3-input"))
+                .sendKeys("NCR");
+        driver.findElement(By.id("react-select-3-input"))
+                .sendKeys(Keys.ENTER);
+
+        pausa(1);
+
+        driver.findElement(By.id("react-select-4-input"))
+                .sendKeys("Delhi");
+        driver.findElement(By.id("react-select-4-input"))
+                .sendKeys(Keys.ENTER);
 
         pausa(2);
 
